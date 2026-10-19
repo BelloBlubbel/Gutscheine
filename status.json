@@ -1,1 +1,118 @@
-{}
+{
+  "redeemed": {},
+  "content": {
+    "title": "Deine Gutscheine",
+    "subtitle": "Zum 18. Geburtstag – jeder Gutschein ist einmal einlösbar.",
+    "testMode": false,
+    "vouchers": [
+      {
+        "id": "a1",
+        "emoji": "📷",
+        "title": "Foto löschung",
+        "text": "Ich lösche ein peinliches Foto von dir"
+      },
+      {
+        "id": "a2",
+        "emoji": "🎬",
+        "title": "Kinoabend",
+        "text": "Du suchst den Film aus, ich sorge für Popcorn."
+      },
+      {
+        "id": "a3",
+        "emoji": "🚗",
+        "title": "Beifahrer der nicht meckert",
+        "text": "Ich bin deine Passenger Princess und meckere nicht über deinen Fahrstil etc."
+      },
+      {
+        "id": "vmvfdve41",
+        "emoji": "🎮",
+        "title": "Gaming-Abend",
+        "text": "Du suchst dir ein Game aus und das suchten wir den ganzen Abend oder Tag"
+      },
+      {
+        "id": "vmvfdxbfq",
+        "emoji": "🧼",
+        "title": "Waschstraßen Date",
+        "text": "Einmal Wäsche für dein Auto inklusive Premium-Saug-Aktion – damit dein Schlitten glänzt wie neu!"
+      },
+      {
+        "id": "vmvfe07tc",
+        "emoji": "❓",
+        "title": "Frage stellen",
+        "text": "Du Darfst mir eine Frage stellen, die ich ehrlich beantworten muss"
+      },
+      {
+        "id": "vmvfejlt5",
+        "emoji": "🥙",
+        "title": "Döner auf mich",
+        "text": ""
+      },
+      {
+        "id": "vmvfeltdc",
+        "emoji": "🧐",
+        "title": "Ich sage \"Du Hattest recht\"",
+        "text": "Wann du es unbedingt mal brauchst das einer sagt \"Du Hattest recht\", dann hier bitte"
+      },
+      {
+        "id": "vmvfeo4nu",
+        "emoji": "⛑️",
+        "title": "Behörden Begleitschutz",
+        "text": "Falls du bei einem schlimmen Behörden gang mal gesellschaft oder Schutz brauchst "
+      },
+      {
+        "id": "vmvfequ7c",
+        "emoji": "🎭",
+        "title": "Laune Retter",
+        "text": "Ich komme wenn du schlecht drauf bist und bringe was mit"
+      },
+      {
+        "id": "vmvfeslsr",
+        "emoji": "📸",
+        "title": "Verkleidung",
+        "text": "Ich ziehe an, was du aussuchst (für ein Foto)"
+      },
+      {
+        "id": "vmvfetx33",
+        "emoji": "🔊",
+        "title": "DJ-Gewalt im Auto",
+        "text": "Du darfst aussuchen was im Auto läuft  (Wahrscheinlich bei Eriq)"
+      },
+      {
+        "id": "vmvfevxhc",
+        "emoji": "🤥",
+        "title": "Unterschrift als Zeuge",
+        "text": "Ich lüge für dich wenn du mal wieder scheiße gebaut hast"
+      },
+      {
+        "id": "vmvfexlmc",
+        "emoji": "🤫",
+        "title": "Ich hab nichts gesehen",
+        "text": "ich ignoriere eine peinliche Aktion von dir und erwähne sie nie wieder"
+      },
+      {
+        "id": "n1",
+        "emoji": "🍸",
+        "title": "Den ersten offiziellen Drink",
+        "text": "Ich spendiere dir deinen ersten ganz offiziellen legalen Shot oder Cocktail in einer Bar"
+      },
+      {
+        "id": "n2",
+        "emoji": "😬",
+        "title": "Der Joker-Wunsch",
+        "text": "Ein Blanko-Gutschein für einen Wunsch deiner Wahl. (Fast) alles ist erlaubt"
+      },
+      {
+        "id": "n3",
+        "emoji": "🥤",
+        "title": "Kaffee / Drink auf die Hand",
+        "text": ""
+      },
+      {
+        "id": "n4",
+        "emoji": "🎁",
+        "title": "Der Hauptgewinn",
+        "text": "Herzlichen Glückwunsch! Dieser Gutschein ist absolut nutzlos, sieht aber wichtig aus und hat dich gerade voll reingelegt. Dafür gibt's jetzt eine feste Umarmung!"
+      }
+    ]
+  }
+}
