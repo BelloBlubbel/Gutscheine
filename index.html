@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de" data-theme="dark" style="color-scheme: dark;" class=" idc0_343 qobidhqm eyfmt gttfeuqdb xblzj sjti vdubvyvxm eapazoh bckljbhn ucomzrzae wttwgntrx pcotylb dhmbb fuacfq"><head>
+<meta charset="utf8">
+<title>Deine Gutscheine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#fff6f2;--card:#ffffff;--ink:#2b2230;--muted:#7a6f80;--accent:#e8506a;--accent-ink:#ffffff;--line:#f0dcdc;--done:#f1ebeb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b161e;--card:#272030;--ink:#f4eef6;--muted:#a89cb0;--accent:#ff6b86;--accent-ink:#2b1018;--line:#3a3044;--done:#221c29;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b161e;--card:#272030;--ink:#f4eef6;--muted:#a89cb0;--accent:#ff6b86;--accent-ink:#2b1018;--line:#3a3044;--done:#221c29;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:520px;margin:0 auto;padding:28px 18px 48px}
+h1{font-size:28px;margin:0 0 4px;line-height:1.15}
+.sub{color:var(--muted);margin:0 0 6px}
+.count{font-size:14px;color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;display:flex;gap:14px;align-items:flex-start}
+.card.done{background:var(--done);opacity:.75}
+.emoji{font-size:34px;line-height:1}
+.body{flex:1;min-width:0}
+.title{font-weight:700;font-size:18px;margin:0 0 2px}
+.card.done .title{text-decoration:line-through}
+.text{color:var(--muted);margin:0 0 12px;white-space:pre-wrap}
+.stamp{font-size:13px;color:var(--muted)}
+button{font:inherit;cursor:pointer;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 14px}
+button.main{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+button.link{border:0;background:none;color:var(--muted);padding:0 0 0 6px;text-decoration:underline;font-size:13px}
+input,textarea{font:inherit;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);color:var(--ink);margin-bottom:8px}
+textarea{min-height:60px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center}
+.emoji-in{width:64px;text-align:center;font-size:22px}
+.bar{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.top{display:flex;justify-content:flex-end;margin-bottom:8px;min-height:20px}
+.msg{color:var(--accent);font-size:14px;margin-top:10px}
+.empty{color:var(--muted);text-align:center;padding:30px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script id="data" type="application/json">{"title":"Deine Gutscheine","subtitle":"Zum 18. Geburtstag – jeder Gutschein ist einmal einlösbar.","vouchers":[{"id":"a1","emoji":"📷","title":"Foto löschung","text":"Ich lösche ein peinliches Foto von dir"},{"id":"a2","emoji":"🎬","title":"Kinoabend","text":"Du suchst den Film aus, ich sorge für Popcorn."},{"id":"a3","emoji":"🚗","title":"Beifahrer der nicht meckert","text":"Ich bin deine Passenger Princess und meckere nicht über deinen Fahrstil etc."},{"id":"vmvfdve41","emoji":"🎮","title":"Gaming-Abend","text":"Du suchst dir ein Game aus und das suchten wir den ganzen Abend oder Tag"},{"id":"vmvfdxbfq","emoji":"🧼","title":"Autowäsche","text":"Ich Wasche einmal dein zukünftiges Auto aber die kosten trägst du!"},{"id":"vmvfe07tc","emoji":"❓","title":"Frage stellen","text":"Du Darfst mir eine Frage stellen, die ich ehrlich beantworten muss"},{"id":"vmvfejlt5","emoji":"🥙","title":"Döner auf mich","text":""},{"id":"vmvfeltdc","emoji":"🧐","title":"Ich sage \"Du Hattest recht\"","text":"Wann du es unbedingt mal brauchst das einer sagt \"Du Hattest recht\", dann hier bitte"},{"id":"vmvfeo4nu","emoji":"⛑️","title":"Behörden Begleitschutz","text":"Falls du bei einem schlimmen Behörden gang mal gesellschaft oder Schutz brauchst "},{"id":"vmvfequ7c","emoji":"🎭","title":"Laune Retter","text":"Ich komme wenn du schlecht drauf bist und bringe was mit"},{"id":"vmvfeslsr","emoji":"📸","title":"Verkleidung","text":"Ich ziehe an, was du aussuchst (für ein Foto)"},{"id":"vmvfetx33","emoji":"🔊","title":"Playlist Verbot aufheben","text":"Du darfst aussuchen was läuft im Auto (Wahrscheinlich bei Eriq)"},{"id":"vmvfevxhc","emoji":"🤥","title":"Unterschrift als Zeuge","text":"Ich lüge für dich wenn du mal wieder scheiße gebaut hast"},{"id":"vmvfexlmc","emoji":"🤫","title":"Ich hab nichts gesehen","text":"ich ignoriere eine peinliche Aktion von dir und erwähne sie nie wieder"}]}</script>
+<script>
+(function(){
+  // ====== HIER EINTRAGEN ======
+  var CONFIG = {
+    owner: 'BelloBlubbel',   // dein GitHub-Benutzername
+    repo: 'Gutscheine',      // Name des Repositorys
+    file: 'status.json',         // Datei, in der der Stand liegt
+    branch: 'main',
+    pollSeconds: 8               // so oft wird auf Änderungen geprüft
+  };
+  // ============================
+
+  var S = JSON.parse(document.getElementById('data').textContent);
+  var app = document.getElementById('app');
+  var API = 'https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + '/contents/' + CONFIG.file;
+  var red = {}, lastRaw = null, armed = null, saving = 0, token = '', state = 'loading', busy = Promise.resolve();
+  var configured = CONFIG.owner.indexOf('DEIN-') !== 0 && CONFIG.repo.indexOf('DEIN-') !== 0;
+
+  // Token kommt aus dem Link (#t=...) oder aus dem Browser-Speicher, nie aus dem Quelltext
+  try {
+    var m = location.hash.match(/[#&]t=([^&]+)/);
+    if (m) {
+      token = decodeURIComponent(m[1]);
+      try { localStorage.setItem('ghtoken', token); } catch (e) {}
+      history.replaceState(null, '', location.pathname + location.search);
+    } else {
+      token = localStorage.getItem('ghtoken') || '';
+    }
+  } catch (e) {}
+
+  function h(tag, props){
+    var el = document.createElement(tag);
+    props = props || {};
+    Object.keys(props).forEach(function(k){
+      if (k === 'class') el.className = props[k];
+      else if (k.indexOf('on') === 0) el.addEventListener(k.slice(2), props[k]);
+      else el[k] = props[k];
+    });
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c == null || c === false) continue;
+      el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return el;
+  }
+  function today(){ return new Date().toLocaleDateString('de-DE'); }
+  function enc(str){ var b = new TextEncoder().encode(str), s = ''; b.forEach(function(x){ s += String.fromCharCode(x); }); return btoa(s); }
+  function dec(b64){ var s = atob(b64.replace(/\s/g, '')), a = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return new TextDecoder().decode(a); }
+
+  // ---- GitHub-API ----
+  function gh(method, body){
+    var url = method === 'GET' ? API + '?ref=' + CONFIG.branch + '&_=' + Date.now() : API;
+    var headers = {'Accept': 'application/vnd.github+json', 'Authorization': 'Bearer ' + token, 'X-GitHub-Api-Version': '2022-11-28'};
+    if (body) headers['Content-Type'] = 'application/json';
+    return fetch(url, {method: method, cache: 'no-store', headers: headers, body: body ? JSON.stringify(body) : undefined});
+  }
+  async function fetchRemote(){
+    var r = await gh('GET');
+    if (r.status === 404) return {data: {}, sha: null};
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    var j = await r.json(), d = {};
+    try { d = JSON.parse(dec(j.content)) || {}; } catch (e) {}
+    return {data: d, sha: j.sha};
+  }
+  function adopt(d){
+    var raw = JSON.stringify(d);
+    if (raw !== lastRaw) { lastRaw = raw; red = d; render(); }
+  }
+  function setState(s){ state = s; var el = document.getElementById('st'); if (el) el.textContent = stateText(); }
+  function stateText(){
+    return {loading:'Lade …', ok:'🟢 synchronisiert', error:'⚠️ keine Verbindung zu GitHub', saveerr:'⚠️ Speichern fehlgeschlagen'}[state];
+  }
+
+  // Laden (beim Öffnen und im Intervall)
+  async function load(){
+    if (!token || !configured || saving) return;
+    try { var r = await fetchRemote(); adopt(r.data); setState('ok'); }
+    catch (e) { setState('error'); }
+  }
+
+  // Speichern: holt immer erst den neuesten Stand, ändert ihn und schreibt ihn zurück
+  function mutate(fn){
+    saving++;
+    busy = busy.then(async function(){
+      try {
+        for (var t = 0; t < 4; t++) {
+          var r = await fetchRemote(), d = r.data;
+          fn(d);
+          var body = {message: 'Gutschein-Status aktualisiert', content: enc(JSON.stringify(d, null, 2)), branch: CONFIG.branch};
+          if (r.sha) body.sha = r.sha;
+          var p = await gh('PUT', body);
+          if (p.ok) { adopt(d); setState('ok'); return; }
+          if (p.status !== 409 && p.status !== 422) throw new Error('HTTP ' + p.status);
+        }
+        throw new Error('conflict');
+      } catch (e) {
+        try { var back = await fetchRemote(); adopt(back.data); } catch (_) {}
+        setState('saveerr');
+      }
+    }).then(function(){ saving--; });
+  }
+
+  // ---- Ansicht ----
+  function render(){
+    app.replaceChildren();
+    app.appendChild(h('h1', {}, S.title));
+    app.appendChild(h('p', {class:'sub'}, S.subtitle));
+    var n = S.vouchers.filter(function(v){ return red[v.id]; }).length;
+    app.appendChild(h('p', {class:'count'}, n + ' von ' + S.vouchers.length + ' eingelöst' + (S.testMode ? ' · Testmodus an' : '') + ' · ', h('span', {id:'st'}, stateText())));
+
+    if (!configured) {
+      app.appendChild(h('div', {class:'box'}, 'Bitte oben in der Datei bei CONFIG deinen GitHub-Namen und den Repository-Namen eintragen.'));
+    } else if (!token) {
+      var inp = h('input', {placeholder:'Zugangscode einfügen (github_pat_…)'});
+      app.appendChild(h('div', {class:'box'}, h('p', {class:'sub'}, 'Für die Synchronisierung wird einmalig ein Zugangscode gebraucht.'), inp,
+        h('button', {class:'main', onclick:function(){
+          var v = inp.value.trim(); if (!v) return;
+          token = v; try { localStorage.setItem('ghtoken', v); } catch (e) {}
+          setState('loading'); render(); load();
+        }}, 'Speichern')));
+    }
+
+    S.vouchers.forEach(function(v){
+      var done = red[v.id], action;
+      if (done) {
+        action = h('div', {class:'stamp'}, '✓ Eingelöst am ' + done, S.testMode && h('button', {class:'link', onclick:function(){
+          delete red[v.id]; render(); mutate(function(d){ delete d[v.id]; });
+        }}, 'rückgängig'));
+      } else if (armed === v.id) {
+        action = h('div', {class:'row'},
+          h('button', {class:'main', onclick:function(){
+            var when = today(); red[v.id] = when; armed = null; render();
+            mutate(function(d){ if (!d[v.id]) d[v.id] = when; });
+          }}, 'Ja, jetzt einlösen'),
+          h('button', {onclick:function(){ armed = null; render(); }}, 'Abbrechen'));
+      } else {
+        action = h('button', {class:'main', disabled:!token || !configured, onclick:function(){ armed = v.id; render(); }}, 'Einlösen');
+      }
+      app.appendChild(h('div', {class:'card' + (done ? ' done' : '')},
+        h('div', {class:'emoji'}, v.emoji || '🎁'),
+        h('div', {class:'body'}, h('p', {class:'title'}, v.title), h('p', {class:'text'}, v.text), action)));
+    });
+  }
+
+  render();
+  load();
+  setInterval(function(){ if (!document.hidden) load(); }, CONFIG.pollSeconds * 1000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) load(); });
+})();
+</script>
+</body>
+</html>
