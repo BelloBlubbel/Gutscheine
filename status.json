@@ -6,6 +6,18 @@
     "testMode": false,
     "vouchers": [
       {
+        "id": "n3",
+        "emoji": "🥤",
+        "title": "Kaffee / Drink auf die Hand",
+        "text": ""
+      },
+      {
+        "id": "vmvfejlt5",
+        "emoji": "🥙",
+        "title": "Döner auf mich",
+        "text": ""
+      },
+      {
         "id": "a1",
         "emoji": "📷",
         "title": "Foto löschung",
@@ -40,12 +52,6 @@
         "emoji": "❓",
         "title": "Frage stellen",
         "text": "Du Darfst mir eine Frage stellen, die ich ehrlich beantworten muss"
-      },
-      {
-        "id": "vmvfejlt5",
-        "emoji": "🥙",
-        "title": "Döner auf mich",
-        "text": ""
       },
       {
         "id": "vmvfeltdc",
@@ -100,12 +106,6 @@
         "emoji": "😬",
         "title": "Der Joker-Wunsch",
         "text": "Ein Blanko-Gutschein für einen Wunsch deiner Wahl. (Fast) alles ist erlaubt"
-      },
-      {
-        "id": "n3",
-        "emoji": "🥤",
-        "title": "Kaffee / Drink auf die Hand",
-        "text": ""
       },
       {
         "id": "n4",
