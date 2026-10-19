@@ -37,35 +37,43 @@ textarea{min-height:60px;resize:vertical}
 </head>
 <body>
 <div id="app"></div>
-<script id="data" type="application/json">{"title":"Deine Gutscheine","subtitle":"Zum 18. Geburtstag – jeder Gutschein ist einmal einlösbar.","vouchers":[{"id":"a1","emoji":"📷","title":"Foto löschung","text":"Ich lösche ein peinliches Foto von dir"},{"id":"a2","emoji":"🎬","title":"Kinoabend","text":"Du suchst den Film aus, ich sorge für Popcorn."},{"id":"a3","emoji":"🚗","title":"Beifahrer der nicht meckert","text":"Ich bin deine Passenger Princess und meckere nicht über deinen Fahrstil etc."},{"id":"vmvfdve41","emoji":"🎮","title":"Gaming-Abend","text":"Du suchst dir ein Game aus und das suchten wir den ganzen Abend oder Tag"},{"id":"vmvfdxbfq","emoji":"🧼","title":"Autowäsche","text":"Ich Wasche einmal dein zukünftiges Auto aber die kosten trägst du!"},{"id":"vmvfe07tc","emoji":"❓","title":"Frage stellen","text":"Du Darfst mir eine Frage stellen, die ich ehrlich beantworten muss"},{"id":"vmvfejlt5","emoji":"🥙","title":"Döner auf mich","text":""},{"id":"vmvfeltdc","emoji":"🧐","title":"Ich sage \"Du Hattest recht\"","text":"Wann du es unbedingt mal brauchst das einer sagt \"Du Hattest recht\", dann hier bitte"},{"id":"vmvfeo4nu","emoji":"⛑️","title":"Behörden Begleitschutz","text":"Falls du bei einem schlimmen Behörden gang mal gesellschaft oder Schutz brauchst "},{"id":"vmvfequ7c","emoji":"🎭","title":"Laune Retter","text":"Ich komme wenn du schlecht drauf bist und bringe was mit"},{"id":"vmvfeslsr","emoji":"📸","title":"Verkleidung","text":"Ich ziehe an, was du aussuchst (für ein Foto)"},{"id":"vmvfetx33","emoji":"🔊","title":"Playlist Verbot aufheben","text":"Du darfst aussuchen was läuft im Auto (Wahrscheinlich bei Eriq)"},{"id":"vmvfevxhc","emoji":"🤥","title":"Unterschrift als Zeuge","text":"Ich lüge für dich wenn du mal wieder scheiße gebaut hast"},{"id":"vmvfexlmc","emoji":"🤫","title":"Ich hab nichts gesehen","text":"ich ignoriere eine peinliche Aktion von dir und erwähne sie nie wieder"}]}</script>
+<script id="data" type="application/json">{"title":"Deine Gutscheine","subtitle":"Zum 18. Geburtstag – jeder Gutschein ist einmal einlösbar.","vouchers":[{"id":"a1","emoji":"📷","title":"Foto löschung","text":"Ich lösche ein peinliches Foto von dir"},{"id":"a2","emoji":"🎬","title":"Kinoabend","text":"Du suchst den Film aus, ich sorge für Popcorn."},{"id":"a3","emoji":"🚗","title":"Beifahrer der nicht meckert","text":"Ich bin deine Passenger Princess und meckere nicht über deinen Fahrstil etc."},{"id":"vmvfdve41","emoji":"🎮","title":"Gaming-Abend","text":"Du suchst dir ein Game aus und das suchten wir den ganzen Abend oder Tag"},{"id":"vmvfdxbfq","emoji":"🧼","title":"Autowäsche","text":"Ich Wasche einmal dein zukünftiges Auto aber die kosten trägst du!"},{"id":"vmvfe07tc","emoji":"❓","title":"Frage stellen","text":"Du Darfst mir eine Frage stellen, die ich ehrlich beantworten muss"},{"id":"vmvfejlt5","emoji":"🥙","title":"Döner auf mich","text":""},{"id":"vmvfeltdc","emoji":"🧐","title":"Ich sage \"Du Hattest recht\"","text":"Wann du es unbedingt mal brauchst das einer sagt \"Du Hattest recht\", dann hier bitte"},{"id":"vmvfeo4nu","emoji":"⛑️","title":"Behörden Begleitschutz","text":"Falls du bei einem schlimmen Behörden gang mal gesellschaft oder Schutz brauchst "},{"id":"vmvfequ7c","emoji":"🎭","title":"Laune Retter","text":"Ich komme wenn du schlecht drauf bist und bringe was mit"},{"id":"vmvfeslsr","emoji":"📸","title":"Verkleidung","text":"Ich ziehe an, was du aussuchst (für ein Foto)"},{"id":"vmvfetx33","emoji":"🔊","title":"Playlist Verbot aufheben","text":"Du darfst aussuchen was läuft im Auto (Wahrscheinlich bei Eriq)"},{"id":"vmvfevxhc","emoji":"🤥","title":"Unterschrift als Zeuge","text":"Ich lüge für dich wenn du mal wieder scheiße gebaut hast"},{"id":"vmvfexlmc","emoji":"🤫","title":"Ich hab nichts gesehen","text":"ich ignoriere eine peinliche Aktion von dir und erwähne sie nie wieder"},{"id":"n1","emoji":"🎁","title":"Neuer Gutschein 1","text":"Beschreibung 1"},{"id":"n2","emoji":"🎁","title":"Neuer Gutschein 2","text":"Beschreibung 2"},{"id":"n3","emoji":"🎁","title":"Neuer Gutschein 3","text":"Beschreibung 3"},{"id":"n4","emoji":"🎁","title":"Neuer Gutschein 4","text":"Beschreibung 4"}]}</script>
 <script>
 (function(){
-  // ====== HIER EINTRAGEN ======
   var CONFIG = {
-    owner: 'BelloBlubbel',   // dein GitHub-Benutzername
-    repo: 'Gutscheine',      // Name des Repositorys
-    file: 'status.json',         // Datei, in der der Stand liegt
+    owner: '',                   // wird auf github.io automatisch erkannt
+    repo: '',                    // wird auf github.io automatisch erkannt
+    file: 'status.json',         // Datei, in der Stand und Gutscheine liegen
     branch: 'main',
     pollSeconds: 8               // so oft wird auf Änderungen geprüft
   };
-  // ============================
+  var hostMatch = location.hostname.match(/^(.+)\.github\.io$/);
+  if (hostMatch) {
+    CONFIG.owner = hostMatch[1];
+    CONFIG.repo = location.pathname.split('/')[1] || (hostMatch[1] + '.github.io');
+  }
 
-  var S = JSON.parse(document.getElementById('data').textContent);
+  var DEFAULT = JSON.parse(document.getElementById('data').textContent);
+  var S = DEFAULT;               // aktuelle Gutscheine (aus GitHub, sonst Standard aus dieser Datei)
   var app = document.getElementById('app');
   var API = 'https://api.github.com/repos/' + CONFIG.owner + '/' + CONFIG.repo + '/contents/' + CONFIG.file;
-  var red = {}, lastRaw = null, armed = null, saving = 0, token = '', state = 'loading', busy = Promise.resolve();
-  var configured = CONFIG.owner.indexOf('DEIN-') !== 0 && CONFIG.repo.indexOf('DEIN-') !== 0;
+  var red = {}, lastRaw = null, armed = null, saving = 0, token = '', admin = false;
+  var edit = false, draft = null, state = 'loading', busy = Promise.resolve();
+  var configured = !!(CONFIG.owner && CONFIG.repo);
 
-  // Token kommt aus dem Link (#t=...) oder aus dem Browser-Speicher, nie aus dem Quelltext
+  // Token (#t=...) und Admin-Schalter (#admin=1) kommen aus dem Link, nie aus dem Quelltext
   try {
-    var m = location.hash.match(/[#&]t=([^&]+)/);
-    if (m) {
-      token = decodeURIComponent(m[1]);
-      try { localStorage.setItem('ghtoken', token); } catch (e) {}
+    var hs = location.hash.replace(/^#/, '');
+    if (hs) {
+      hs.split('&').forEach(function(kv){
+        var i = kv.indexOf('='), k = i < 0 ? kv : kv.slice(0, i), v = i < 0 ? '' : decodeURIComponent(kv.slice(i + 1));
+        if (k === 't' && v) { token = v; try { localStorage.setItem('ghtoken', v); } catch (e) {} }
+        if (k === 'admin') { admin = v !== '0'; try { if (admin) localStorage.setItem('ghadmin', '1'); else localStorage.removeItem('ghadmin'); } catch (e) {} }
+      });
       history.replaceState(null, '', location.pathname + location.search);
-    } else {
-      token = localStorage.getItem('ghtoken') || '';
     }
+    if (!token) token = localStorage.getItem('ghtoken') || '';
+    if (!admin) admin = localStorage.getItem('ghadmin') === '1';
   } catch (e) {}
 
   function h(tag, props){
@@ -94,24 +102,29 @@ textarea{min-height:60px;resize:vertical}
     if (body) headers['Content-Type'] = 'application/json';
     return fetch(url, {method: method, cache: 'no-store', headers: headers, body: body ? JSON.stringify(body) : undefined});
   }
+  // status.json: {"redeemed": {id: datum}, "content": {...} oder null}; ältere Dateien (nur {id: datum}) werden übernommen
   async function fetchRemote(){
     var r = await gh('GET');
-    if (r.status === 404) return {data: {}, sha: null};
+    if (r.status === 404) return {data: {redeemed: {}, content: null}, sha: null};
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    var j = await r.json(), d = {};
-    try { d = JSON.parse(dec(j.content)) || {}; } catch (e) {}
+    var j = await r.json(), raw = {};
+    try { raw = JSON.parse(dec(j.content)) || {}; } catch (e) {}
+    var d = (raw.redeemed || raw.content) ? {redeemed: raw.redeemed || {}, content: raw.content || null} : {redeemed: raw, content: null};
     return {data: d, sha: j.sha};
   }
   function adopt(d){
     var raw = JSON.stringify(d);
-    if (raw !== lastRaw) { lastRaw = raw; red = d; render(); }
+    if (raw === lastRaw) return;
+    lastRaw = raw;
+    red = d.redeemed;
+    S = d.content && d.content.vouchers ? d.content : DEFAULT;
+    if (!edit) render();
   }
   function setState(s){ state = s; var el = document.getElementById('st'); if (el) el.textContent = stateText(); }
   function stateText(){
     return {loading:'Lade …', ok:'🟢 synchronisiert', error:'⚠️ keine Verbindung zu GitHub', saveerr:'⚠️ Speichern fehlgeschlagen'}[state];
   }
 
-  // Laden (beim Öffnen und im Intervall)
   async function load(){
     if (!token || !configured || saving) return;
     try { var r = await fetchRemote(); adopt(r.data); setState('ok'); }
@@ -129,27 +142,69 @@ textarea{min-height:60px;resize:vertical}
           var body = {message: 'Gutschein-Status aktualisiert', content: enc(JSON.stringify(d, null, 2)), branch: CONFIG.branch};
           if (r.sha) body.sha = r.sha;
           var p = await gh('PUT', body);
-          if (p.ok) { adopt(d); setState('ok'); return; }
+          if (p.ok) { lastRaw = null; adopt(d); setState('ok'); return; }
           if (p.status !== 409 && p.status !== 422) throw new Error('HTTP ' + p.status);
         }
         throw new Error('conflict');
       } catch (e) {
-        try { var back = await fetchRemote(); adopt(back.data); } catch (_) {}
+        try { var back = await fetchRemote(); lastRaw = null; adopt(back.data); } catch (_) {}
         setState('saveerr');
       }
     }).then(function(){ saving--; });
   }
 
   // ---- Ansicht ----
+  function statusLine(extra){
+    return h('p', {class:'count'}, extra, h('span', {id:'st'}, stateText()));
+  }
+
+  function renderEdit(){
+    app.appendChild(h('input', {value:draft.title, placeholder:'Überschrift', oninput:function(e){ draft.title = e.target.value; }}));
+    app.appendChild(h('input', {value:draft.subtitle, placeholder:'Untertitel', oninput:function(e){ draft.subtitle = e.target.value; }}));
+    app.appendChild(h('label', {class:'sub'}, h('input', {type:'checkbox', checked:!!draft.testMode, style:'width:auto;margin-right:8px', onchange:function(e){ draft.testMode = e.target.checked; }}), 'Testmodus: Einlösen darf rückgängig gemacht werden'));
+    draft.vouchers.forEach(function(v, i){
+      app.appendChild(h('div', {class:'card'}, h('div', {class:'body'},
+        h('div', {class:'row'},
+          h('input', {class:'emoji-in', value:v.emoji, maxLength:4, oninput:function(e){ v.emoji = e.target.value; }}),
+          h('input', {value:v.title, placeholder:'Titel', oninput:function(e){ v.title = e.target.value; }})),
+        h('textarea', {value:v.text, placeholder:'Beschreibung', oninput:function(e){ v.text = e.target.value; }}),
+        h('div', {class:'row'},
+          h('button', {disabled:i === 0, onclick:function(){ draft.vouchers.splice(i - 1, 0, draft.vouchers.splice(i, 1)[0]); render(); }}, '↑'),
+          h('button', {disabled:i === draft.vouchers.length - 1, onclick:function(){ draft.vouchers.splice(i + 1, 0, draft.vouchers.splice(i, 1)[0]); render(); }}, '↓'),
+          h('button', {onclick:function(){ draft.vouchers.splice(i, 1); render(); }}, '🗑 Löschen')))));
+    });
+    app.appendChild(h('div', {class:'bar'},
+      h('button', {onclick:function(){ draft.vouchers.push({id:'v' + Date.now().toString(36), emoji:'🎁', title:'', text:''}); render(); }}, '+ Gutschein hinzufügen'),
+      h('button', {class:'main', onclick:saveContent}, 'Speichern'),
+      h('button', {onclick:function(){ edit = false; draft = null; render(); }}, 'Abbrechen')));
+    app.appendChild(statusLine(''));
+  }
+
+  function saveContent(){
+    var content = {
+      title: draft.title, subtitle: draft.subtitle, testMode: !!draft.testMode,
+      vouchers: draft.vouchers.filter(function(v){ return v.title.trim(); })
+    };
+    S = content; edit = false; draft = null; render();
+    mutate(function(d){ d.content = content; });
+  }
+
   function render(){
     app.replaceChildren();
+    var top = h('div', {class:'top'});
+    if (admin && !edit && token && configured) {
+      top.appendChild(h('button', {onclick:function(){ draft = JSON.parse(JSON.stringify(S)); edit = true; render(); }}, '✏️ Bearbeiten'));
+    }
+    app.appendChild(top);
+    if (edit) { renderEdit(); return; }
+
     app.appendChild(h('h1', {}, S.title));
     app.appendChild(h('p', {class:'sub'}, S.subtitle));
     var n = S.vouchers.filter(function(v){ return red[v.id]; }).length;
-    app.appendChild(h('p', {class:'count'}, n + ' von ' + S.vouchers.length + ' eingelöst' + (S.testMode ? ' · Testmodus an' : '') + ' · ', h('span', {id:'st'}, stateText())));
+    app.appendChild(statusLine(n + ' von ' + S.vouchers.length + ' eingelöst' + (S.testMode ? ' · Testmodus an' : '') + ' · '));
 
     if (!configured) {
-      app.appendChild(h('div', {class:'box'}, 'Bitte oben in der Datei bei CONFIG deinen GitHub-Namen und den Repository-Namen eintragen.'));
+      app.appendChild(h('div', {class:'box'}, 'Die Seite liegt nicht auf github.io. Bitte oben in der Datei bei CONFIG GitHub-Namen und Repository-Namen eintragen.'));
     } else if (!token) {
       var inp = h('input', {placeholder:'Zugangscode einfügen (github_pat_…)'});
       app.appendChild(h('div', {class:'box'}, h('p', {class:'sub'}, 'Für die Synchronisierung wird einmalig ein Zugangscode gebraucht.'), inp,
@@ -164,13 +219,13 @@ textarea{min-height:60px;resize:vertical}
       var done = red[v.id], action;
       if (done) {
         action = h('div', {class:'stamp'}, '✓ Eingelöst am ' + done, S.testMode && h('button', {class:'link', onclick:function(){
-          delete red[v.id]; render(); mutate(function(d){ delete d[v.id]; });
+          delete red[v.id]; render(); mutate(function(d){ delete d.redeemed[v.id]; });
         }}, 'rückgängig'));
       } else if (armed === v.id) {
         action = h('div', {class:'row'},
           h('button', {class:'main', onclick:function(){
             var when = today(); red[v.id] = when; armed = null; render();
-            mutate(function(d){ if (!d[v.id]) d[v.id] = when; });
+            mutate(function(d){ if (!d.redeemed[v.id]) d.redeemed[v.id] = when; });
           }}, 'Ja, jetzt einlösen'),
           h('button', {onclick:function(){ armed = null; render(); }}, 'Abbrechen'));
       } else {
