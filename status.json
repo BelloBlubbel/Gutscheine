@@ -6,6 +6,12 @@
     "testMode": false,
     "vouchers": [
       {
+        "id": "n1",
+        "emoji": "🍸",
+        "title": "Den ersten offiziellen Drink",
+        "text": "Ich spendiere dir deinen ersten ganz offiziellen legalen Shot oder Cocktail in einer Bar"
+      },
+      {
         "id": "n3",
         "emoji": "🥤",
         "title": "Kaffee / Drink auf die Hand",
@@ -94,12 +100,6 @@
         "emoji": "🤫",
         "title": "Ich hab nichts gesehen",
         "text": "ich ignoriere eine peinliche Aktion von dir und erwähne sie nie wieder"
-      },
-      {
-        "id": "n1",
-        "emoji": "🍸",
-        "title": "Den ersten offiziellen Drink",
-        "text": "Ich spendiere dir deinen ersten ganz offiziellen legalen Shot oder Cocktail in einer Bar"
       },
       {
         "id": "n2",
